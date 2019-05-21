@@ -51,7 +51,7 @@ DECLARE_GLOBAL_DATA_PTR;
 	PAD_CTL_SPEED_MED | PAD_CTL_DSE_40ohm | PAD_CTL_HYS |	\
 	PAD_CTL_ODE | PAD_CTL_SRE_FAST)
 
-#define I2C_PMIC	1
+//#define I2C_PMIC	1
 
 #define I2C_PAD MUX_PAD_CTRL(I2C_PAD_CTRL)
 
@@ -630,6 +630,8 @@ int board_init(void)
 
 int power_init_board(void)
 {
+/* // 
+
 	struct pmic *p;
 	unsigned int reg;
 	int ret;
@@ -642,18 +644,18 @@ int power_init_board(void)
 	if (ret < 0)
 		return ret;
 
-	/* Increase VGEN3 from 2.5 to 2.8V */
+	// Increase VGEN3 from 2.5 to 2.8V 
 	pmic_reg_read(p, PFUZE100_VGEN3VOL, &reg);
 	reg &= ~LDO_VOL_MASK;
 	reg |= LDOB_2_80V;
 	pmic_reg_write(p, PFUZE100_VGEN3VOL, reg);
 
-	/* Increase VGEN5 from 2.8 to 3V */
+	// Increase VGEN5 from 2.8 to 3V 
 	pmic_reg_read(p, PFUZE100_VGEN5VOL, &reg);
 	reg &= ~LDO_VOL_MASK;
 	reg |= LDOB_3_00V;
 	pmic_reg_write(p, PFUZE100_VGEN5VOL, reg);
-
+*/
 	return 0;
 }
 
@@ -697,7 +699,7 @@ int board_late_init(void)
 
 int checkboard(void)
 {
-	puts("Board: MX6-SabreSD\n");
+	puts("Board: MX6-OpenRex\n");
 	return 0;
 }
 
